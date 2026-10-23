@@ -1,0 +1,21 @@
+services:
+  - type: worker
+    name: freebothing
+    runtime: python
+    plan: starter          # free tier için "starter" yeterli
+    buildCommand: pip install --no-cache-dir -r requirements.txt
+    startCommand: python bot.py
+    autoDeploy: true
+    envVars:
+      - key: BOT_TOKEN
+        sync: false        # Render panelden elle gir
+      - key: OWNER_ID
+        sync: false
+      - key: ADMIN_ID
+        sync: false
+      - key: UPDATE_CHANNEL
+        value: https://t.me/generalotp
+      - key: SUPPORT_USERNAME
+        value: "@logsuzlarsystemvip"
+      - key: PYTHON_VERSION
+        value: "3.11.9"
